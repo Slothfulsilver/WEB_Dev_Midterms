@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="styles.css" type="text/css">
   <title>File-it landing page </title>
@@ -14,32 +20,36 @@
       <a class="navbar-brand" href="#">
       <img src="./images/File-it_logo_b.png" alt="Logo" class="d-inline-block align-text-top">
     </a>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
         <a class="nav-link" href="#">Features</a>
         <a class="nav-link" href="#">Team</a>
         <a class="nav-link" href="#">Sign In</a>
       </div>
     </div>
   </nav>
-  <div class="container">
+  <div class="container" id="first">
     <div class="content">
-      <h1> All your files in one secure location, accessible anywhere.</h1>
+      <h2> All your files in one secure location, accessible anywhere.</h2>
       <p>
         File-it stores your most important files in one secure location. 
         Access them wherever you need, share and collaborate with friends, 
         family, and co-workers.
       </p>
-      <form>
-        <input type="text" placeholder="Enter your email..."/>
-        <input type="button" class="button" value="Get Started">
+      <form class="row g-3">
+        <div class="col-6">
+          <input type="password" class="form-control" id="inputPassword2" placeholder="Enter your email...">
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary btn-block">Get Started</button>
+        </div>
       </form>
     </div>
-    <div class="content">
+    <div class="content" id="pic">
         <img src="./images/illustration-1.svg"/>
     </div>
   </div>
-  <div class="container">
+  <div class="container" id="second">
     <div class="content">
       <h2>Stay productive, wherever you are</h2>
       <p> 
@@ -50,69 +60,69 @@
         Securely share files and folders with friends, family and colleagues for 
         live collaboration. No email attachments required!
       </p>
-      <span class="underline">See How File-it works  
-      <img src="./images/icon-arrow.svg"/>
-      </span>
+        <span class="underline" id="see">See How File-it works  
+          <img src="./images/icon-arrow.svg" />
+        </span>
       <div class="card">
         <div class="card-body">
           <p class="card-text"> 
              File-it has improved our team productivity by an order of magnitude. Since 
             making the switch our team has become a well-oiled collaboration machine.
           </p>
-          <div class="container">
-            <img src="./images/avatar-testimonial.jpg"/>
-            <div>
-              <p>Kylo Ren</p>
-              <p>Founder & CEO, First Order</p>
-            </div>
+          <div class="content" id="avatar">
+            <img src="./images/avatar-testimonial.jpg" />
+            <h4>Kylo Ren</h4>
+            <p>Founder & CEO, First Order</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="content">
-      <img src="./images/illustration-2.svg"/>
+    <div class="content" id="pic">
+      <img src="./images/illustration-2.svg" />
     </div>
   </div>
-  <div class="container">
+  <div class="container" id="third">
     <div class="content">
-      <p>Get early access today</p>
+      <h2>Get early access today</h2>
       <p>It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you</p>
     </div>
-    <div>
+    <div class="content">
       <form>
-        <input type="email" placeholder="Enter your email..."/> <br>
-        <input type="submit" value="Get Started for free">
+        <div class="mb-3">
+          <input type="text"  class="form-control" value="Enter your email...">
+        </div>
+        <button type="submit" class="btn btn-primary rounded-0">Get Started For Free</button>
       </form>
     </div>
   </div>
-  <div class="container">
-    <div class="content">
+  <div class="container" id="fourth">
+    <div class="content" id="logo">
       <img src="./images/File-it_logo_w.png"/>
-    </div>
-   
-    <div class="content">
-      <img src="./images/icon-phone.svg"/>
-      <span>Phone: +1-530-123-4567</span>
-      <br>
-      <img src="./images/icon-email.svg"/>
-      <span>example@file-it.com</span>
-    </div>
-    <div class="content">  
-      <p>About Us</p>
-      <p>Jobs</p>
-      <p>Press</p>
-      <p>Blog</p></div>
-    <div class="content">
-      <p>Contact Us</p>
-      <p>Terms</p>
-      <p>Privacy</p>
-    </div>
+
     <div class="container">
-      <img src="./images/facebook-brands-solid.svg" alt="fb" id="social"/>
-      <img src="./images/twitter-brands-solid.svg" alt="twt" id="social"/>
-      <img src="./images/instagram-brands-solid.svg" alt="inst" id="social"/>
+      <div class="content">
+        <img src="./images/icon-phone.svg"/>
+        <span>Phone: +1-530-123-4567</span>
+        <br>
+        <img src="./images/icon-email.svg"/>
+        <span>example@file-it.com</span>
+      </div>
+      <div class="content">  
+        <p>About Us</p>
+        <p>Jobs</p>
+        <p>Press</p>
+        <p>Blog</p></div>
+      <div class="content">
+        <p>Contact Us</p>
+        <p>Terms</p>
+        <p>Privacy</p>
+      </div>
+      <div class="content">
+        <img src="./images/facebook-brands-solid.svg" alt="fb" id="social"/>
+        <img src="./images/twitter-brands-solid.svg" alt="twt" id="social"/>
+        <img src="./images/instagram-brands-solid.svg" alt="inst" id="social"/>
+      </div>
     </div>
   </div>
-  
 </body>
 </html>
