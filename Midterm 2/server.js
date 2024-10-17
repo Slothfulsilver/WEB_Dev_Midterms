@@ -21,28 +21,7 @@ app.route('/')
     //Var with URL for API call
     var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
     
-    var character = {
-      id: "",
-      birth: "",
-      death: "",
-      name: "",
-      gender: "",
-      height: "",
-      mass: "",
-      homeWorld: "",
-      affl: "",
-      formAffl: "",
-      image: "",
-      masters: "",
-      apprentices: "",
-      linkWiki: "",
-
-      species: "",
-      
-      manModel: "",
-     
-      extra: ""
-  };
+   
     
 
     await https.get(swCall, (response=>{
@@ -60,29 +39,93 @@ app.route('/')
         (responseContent);
 
       for(let i of jsonResp){
-        character.id = i.id;
-        //character.birth = i.birth;
-        //character.death = i.death;
-        character.name = i.name;
-        character.gender = i.gender;
-        character.height = i.height;
-        character.mass = i.mass;
-        character.homeWorld = i.homeworld;
-        character.affl = i.affiliations;
-        character.formAffl = i.formerAffiliations;
-        character.image = i.image;
-        character.masters = i.masters;
-        character.apprentices = i.apprentices;
-        character.linkWiki = i.wiki;
-
-        character.species = i.species;
-
-        if(character.species == "wookie"){}
-        if(character.species == "droid"){}
-        
-        character.manModel = i.manModel;
-        character.extra = i.extra;
+        //Initializing JSON character
+        var character = {
+          id: "NA",
+          birth: "NA",
+          death: "NA",
+          name: "NA",
+          gender: "NA",
+          height: "NA",
+          mass: "NA",
+          homeWorld: "NA",
+          affl: "NA",
+          formAffl: "NA",
+          image: "NA",
+          masters: "NA",
+          apprentices: "NA",
+          linkWiki: "NA",
+          skinColor: "NA",
+    
+          species: "NA",
+         
+          extra: []
       };
+
+
+        if (i.id){character.id = i.id;}
+        if (i.name){character.name = i.name;}
+        if (i.gender){character.gender = i.gender;}
+        if (i.height){character.height = i.height + " m";}
+        if (i.image){character.image = i.image;}
+        if (i.wiki){character.linkWiki = i.wiki;}
+        if (i.species){character.species = i.species;}
+        
+        if (i.mass){character.mass = i.mass + " kg";}
+        if (i.born){character.birth = i.born;}
+        if (i.died){ character.death = i.died;}
+        if(i.skinColor){character.skinColor = i.skinColor;}
+        
+        if (i.homeworld) {character.homeWorld = i.homeworld;}
+        if (i.affiliations) {character.affl = i.affiliations;}
+        if (i.formerAffiliations){ character.formAffl = i.formerAffiliations;}
+        if (i.masters) {character.masters = i.masters;}
+        if (i.apprentices) {character.apprentices = i.apprentices;}
+        
+
+        
+
+        if(character.species == "wookiee"){
+          if(i.hairColor){character.skinColor = i.hairColor + " hair";}
+        }
+        if(character.species == "droid"){
+          if(i.platingColor){character.skinColor = i.platingColor;}
+          if(i.dateDestroyed){character.death = i.dateDestroyed;}
+
+          if(i.manufacturer){character.extra.push(`Manufacturer: ${i.manufacturer}`);}
+          if(i.destroyedLocation){character.extra.push(`Destroyed Location: ${i.destroyedLocation}`);}
+          if(i.class){character.extra.push(`Class: ${i.class}`);}
+        }
+        else{
+          if(i.cybernetics){character.extra.push(`Cybernetics: ${i.cybernetics}`);}
+          if(i.hairColor){character.extra.push(`Hair color: ${i.hairColor}`);} 
+          if(i.eyeColor){character.extra.push(`Eye Color: ${i.eyeColor}`);}
+        }
+
+        if(character.birth != "NA"){
+          if(character.birth < 0){
+            character.birth = String(-1*parseInt(character.birth)) + " BBY";
+          }
+          else{
+            character.birth = character.birth + " ABY";
+          }
+        }
+
+        if(character.death != "NA"){
+          if(character.death < 0){
+            character.death = String(-1*parseInt(character.death)) + " BBY";
+          }
+          else{
+            character.death = character.death + " ABY";
+          }
+        }
+      
+      //Introducing the character
+      arrCharacters.push(character);
+        
+      };
+
+      console.log(arrCharacters);
 
       var params = {
           jsonResp,
