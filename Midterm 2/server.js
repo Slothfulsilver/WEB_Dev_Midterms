@@ -20,49 +20,56 @@ app.route('/')
   .get(async (req, res) => {
     //Var with URL for API call
     var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
-    
-   
-    
 
+    //API CALL
     await https.get(swCall, (response=>{
       console.log("Got a response from swCall");
       console.log(response.statusCode);
       
+      //Receiving API data
       var responseContent="";
       response.on("data", (data)=>{
         console.log(responseContent);
         responseContent += data;
       });
       
+      //When all data is received
       response.on("end", ()=>{
           var jsonResp = JSON.parse
         (responseContent);
 
+      //Getting info for all characters
       for(let i of jsonResp){
-        //Initializing JSON character
+
+        //Initializing JSON type Character
         var character = {
+          //Must have parameters
           id: "NA",
-          birth: "NA",
-          death: "NA",
           name: "NA",
           gender: "NA",
           height: "NA",
+          image: "NA",
+          linkWiki: "NA",
+          species: "NA",
+
+          //Should but may have parameters
           mass: "NA",
+          birth: "NA",
+          death: "NA",
+          skinColor: "NA",
+          
+          //May not have parameters
           homeWorld: "NA",
           affl: "NA",
           formAffl: "NA",
-          image: "NA",
           masters: "NA",
           apprentices: "NA",
-          linkWiki: "NA",
-          skinColor: "NA",
     
-          species: "NA",
-         
+          //EXTRA
           extra: []
       };
 
-
+        //All parameters every charachter should have
         if (i.id){character.id = i.id;}
         if (i.name){character.name = i.name;}
         if (i.gender){character.gender = i.gender;}
@@ -71,11 +78,13 @@ app.route('/')
         if (i.wiki){character.linkWiki = i.wiki;}
         if (i.species){character.species = i.species;}
         
+        //Parameters characters should have but they may not have
         if (i.mass){character.mass = i.mass + " kg";}
         if (i.born){character.birth = i.born;}
         if (i.died){ character.death = i.died;}
         if(i.skinColor){character.skinColor = i.skinColor;}
         
+        //Less likely parameters for every character it would be awesome for them to have
         if (i.homeworld) {character.homeWorld = i.homeworld;}
         if (i.affiliations) {character.affl = i.affiliations;}
         if (i.formerAffiliations){ character.formAffl = i.formerAffiliations;}
@@ -84,24 +93,28 @@ app.route('/')
         
 
         
-
+        //Special treatment of characteristics for wookiees
         if(character.species == "wookiee"){
           if(i.hairColor){character.skinColor = i.hairColor + " hair";}
         }
+        //Special treatment of characteristics for droids
         if(character.species == "droid"){
           if(i.platingColor){character.skinColor = i.platingColor;}
           if(i.dateDestroyed){character.death = i.dateDestroyed;}
 
+          //Special treatment of characteristics for droid extras
           if(i.manufacturer){character.extra.push(`Manufacturer: ${i.manufacturer}`);}
           if(i.destroyedLocation){character.extra.push(`Destroyed Location: ${i.destroyedLocation}`);}
           if(i.class){character.extra.push(`Class: ${i.class}`);}
         }
         else{
+          //Adding extras for every species except droids
           if(i.cybernetics){character.extra.push(`Cybernetics: ${i.cybernetics}`);}
           if(i.hairColor){character.extra.push(`Hair color: ${i.hairColor}`);} 
           if(i.eyeColor){character.extra.push(`Eye Color: ${i.eyeColor}`);}
         }
 
+        //Turning year of birth into a cannonically accurate format
         if(character.birth != "NA"){
           if(character.birth < 0){
             character.birth = String(-1*parseInt(character.birth)) + " BBY";
@@ -111,6 +124,7 @@ app.route('/')
           }
         }
 
+        //Turning year of death into a cannonically accurate format
         if(character.death != "NA"){
           if(character.death < 0){
             character.death = String(-1*parseInt(character.death)) + " BBY";
@@ -120,11 +134,12 @@ app.route('/')
           }
         }
       
-      //Introducing the character
+      //Introducing the character into the character array
       arrCharacters.push(character);
         
       };
 
+      //Revising that the data was well inserted
       console.log(arrCharacters);
 
       var params = {
@@ -132,7 +147,6 @@ app.route('/')
           arrCharacters
         };
         
-        console.log("SANDMAN");
         res.render("home", params);
 
       }).on("error", (e)=>{
