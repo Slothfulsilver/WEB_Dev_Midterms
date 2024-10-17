@@ -9,6 +9,9 @@ app.use(express.static("public"));
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
 
+//Global list with all characters
+var arrCharacters = [];
+
 
 //GET and POST functions for the root
 
@@ -17,6 +20,30 @@ app.route('/')
   .get(async (req, res) => {
     //Var with URL for API call
     var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
+    
+    var character = {
+      id: "",
+      birth: "",
+      death: "",
+      name: "",
+      gender: "",
+      height: "",
+      mass: "",
+      homeWorld: "",
+      affl: "",
+      formAffl: "",
+      image: "",
+      masters: "",
+      apprentices: "",
+      linkWiki: "",
+
+      species: "",
+      
+      manModel: "",
+     
+      extra: ""
+  };
+    
 
     await https.get(swCall, (response=>{
       console.log("Got a response from swCall");
@@ -32,8 +59,34 @@ app.route('/')
           var jsonResp = JSON.parse
         (responseContent);
 
-        var params = {
-          jsonResp
+      for(let i of jsonResp){
+        character.id = i.id;
+        //character.birth = i.birth;
+        //character.death = i.death;
+        character.name = i.name;
+        character.gender = i.gender;
+        character.height = i.height;
+        character.mass = i.mass;
+        character.homeWorld = i.homeworld;
+        character.affl = i.affiliations;
+        character.formAffl = i.formerAffiliations;
+        character.image = i.image;
+        character.masters = i.masters;
+        character.apprentices = i.apprentices;
+        character.linkWiki = i.wiki;
+
+        character.species = i.species;
+
+        if(character.species == "wookie"){}
+        if(character.species == "droid"){}
+        
+        character.manModel = i.manModel;
+        character.extra = i.extra;
+      };
+
+      var params = {
+          jsonResp,
+          arrCharacters
         };
         
         console.log("SANDMAN");
