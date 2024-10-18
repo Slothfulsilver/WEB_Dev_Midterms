@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 app.route('/')
   .get(async (req, res) => {
     //Var with URL for API call
-    var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
+    var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/1.json`;
 
     await https.get(swCall, (response=>{
       console.log("Got a response from swCall");
