@@ -21,7 +21,7 @@ app.route('/')
     //Var with URL for API call
     var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
 
-
+    arrCharacters = [];
     //API CALL
     await https.get(swCall, (response=>{
       console.log("Got a response from swCall");
@@ -143,6 +143,7 @@ app.route('/')
 
       //Revising that the data was well inserted
       console.log(arrCharacters);
+      console.log(arrCharacters.length);
 
       var params = {
           jsonResp,
