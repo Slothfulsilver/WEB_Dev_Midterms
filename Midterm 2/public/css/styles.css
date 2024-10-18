@@ -12,3 +12,48 @@ body {
 #search{
     color: #ffd500;
 }
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card {
+  background-color: #111;
+  border-radius: 10px;
+  width: 220px;
+  margin: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.affiliation {
+  background-color: #ff0000;
+  padding: 5px;
+  color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Affiliation Colors */
+.jedi {
+  background-color: #00ff00;
+}
+
+.sith {
+  background-color: #ff0000;
+}
+
+.rebel {
+  background-color: #0000ff;
+}
