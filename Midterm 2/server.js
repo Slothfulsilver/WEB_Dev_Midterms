@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 
 //Global list with all characters
 var arrCharacters = [];
-
+var foundCharacters = [];
 
 //GET and POST functions for the root
 
@@ -164,15 +164,41 @@ app.route('/')
 
 //Making route /search for the character search bar
 app.route('/search')
+  .get((req, res)=>{
+    var name = req.query.name;
+    console.log(`Characters found: ${foundCharacters.length}`)
+    //If there are any characters found, render the found ejs
+    if(foundCharacters.length > 0){
+      var params = {
+        foundCharacters,
+        name
+      };
+
+      console.log("Redirecting to found");
+
+      //Rendering found in views
+      res.render("found", params);
+    }
+    //If not, then redirect to root WE HAVE TO REDIRECT TO NOT FOUND PAGE
+    else{
+      var params = {
+        name
+      };
+
+      console.log("Redirecting to not-found");
+      
+      //Rendering not-found in views
+      res.render("not-found", params);
+    }
+  })
   .post((req, res)=>{
     //Splitting into a list the input name
     var name = req.body.name.split(' ');
-    var foundCharacters = [];
+    foundCharacters = [];
     
     //Checking all the registered characters names and/or lastnames
     for (let i = 0; i < arrCharacters.length; i++) {
       var n = arrCharacters[i].name.split(' ');
-
       //Analizing the length of the input name list
       if(name.length > 1){
         //Analizing the length of the arrCharacter name
@@ -184,8 +210,8 @@ app.route('/search')
         }
         else{
           //If name of input matches name or last name of arrCharacter, push to foundCharacters
-          if (n[0].toLowerCase() === name[0].toLowerCase() || n[0].toLowerCase() === name[1].toLowerCase()) { 
-              foundCharacters.push(arrCharacters[i]);
+          if (n[0].toLowerCase() === name[0].toLowerCase() || n[0].toLowerCase() === name[1].toLowerCase()) {
+            foundCharacters.push(arrCharacters[i]);
           }
         }
       }
@@ -206,10 +232,9 @@ app.route('/search')
       }
     }
 
-    console.log(foundCharacters);
-    res.render("found", foundCharacters);
-
-  })
+    //Redirecting to the GET function of the same route (/search) with "name" as a query parameter
+    res.redirect(`/search?name=${name}`);
+  });
 
 
 //Listening port 3000
