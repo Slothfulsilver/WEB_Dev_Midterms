@@ -147,6 +147,7 @@ app.route('/')
           arrCharacters
         };
         
+        //Rendering home
         res.render("home", params);
 
       }).on("error", (e)=>{
@@ -155,9 +156,60 @@ app.route('/')
     }));
   })
 
+  //POST method for root
   .post((req, res) => {
     res.send();
   });
+
+
+//Making route /search for the character search bar
+app.route('/search')
+  .post((req, res)=>{
+    //Splitting into a list the input name
+    var name = req.body.name.split(' ');
+    var foundCharacters = [];
+    
+    //Checking all the registered characters names and/or lastnames
+    for (let i = 0; i < arrCharacters.length; i++) {
+      var n = arrCharacters[i].name.split(' ');
+
+      //Analizing the length of the input name list
+      if(name.length > 1){
+        //Analizing the length of the arrCharacter name
+        if (n.length > 1){
+          //If either name or last name of either input name or arrCharacter name matches, push to foundCharacters
+          if (n[0].toLowerCase() === name[0].toLowerCase() || n[1].toLowerCase() === name[1].toLowerCase() || n[1].toLowerCase() === name[0].toLowerCase() || n[0].toLowerCase() === name[1].toLowerCase()) { 
+            foundCharacters.push(arrCharacters[i]);
+          }
+        }
+        else{
+          //If name of input matches name or last name of arrCharacter, push to foundCharacters
+          if (n[0].toLowerCase() === name[0].toLowerCase() || n[0].toLowerCase() === name[1].toLowerCase()) { 
+              foundCharacters.push(arrCharacters[i]);
+          }
+        }
+      }
+      else{
+        //Analizing the length of the arrCharacter name
+        if (n.length > 1){
+          //If either name or last arrCharacter matches name of input, push to foundCharacters
+          if (n[0].toLowerCase() === name[0].toLowerCase() || n[1].toLowerCase() === name[0].toLowerCase()) { 
+            foundCharacters.push(arrCharacters[i]);
+          }
+        }
+        else{
+          //If name of arrCharacter matches name of input, push to foundCharacters
+          if (n[0].toLowerCase() === name[0].toLowerCase()) { 
+              foundCharacters.push(arrCharacters[i]);
+          }
+        }
+      }
+    }
+
+    console.log(foundCharacters);
+    res.render("found", foundCharacters);
+
+  })
 
 
 //Listening port 3000
