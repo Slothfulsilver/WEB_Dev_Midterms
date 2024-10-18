@@ -4,7 +4,6 @@ const https = require('https');
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended:true}));
 app.use(express.static("public"));
 app.engine("ejs", require("ejs").renderFile);
@@ -17,14 +16,12 @@ app.set("view engine", "ejs");
 app.route('/')
   .get(async (req, res) => {
     //Var with URL for API call
-    var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/1.json`;
     var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
 
     await https.get(swCall, (response => {
       console.log("Got a response from swCall");
       console.log(response.statusCode);
 
-      var responseContent = "";
       var responseContent="";
       response.on("data", (data) => {
         console.log(responseContent);
@@ -42,7 +39,6 @@ app.route('/')
         console.log("SANDMAN");
         res.render("home", params);
 
-      }).on("error", (e) => {
       }).on("error", (e)=>{
         res.send("Error: $(e.message");
       });
