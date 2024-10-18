@@ -4,7 +4,7 @@ const https = require('https');
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended:true}));
 app.use(express.static("public"));
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
@@ -21,6 +21,7 @@ app.route('/')
     //Var with URL for API call
     var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
 
+
     //API CALL
     await https.get(swCall, (response=>{
       console.log("Got a response from swCall");
@@ -28,10 +29,11 @@ app.route('/')
       
       //Receiving API data
       var responseContent="";
-      response.on("data", (data)=>{
+      response.on("data", (data) => {
         console.log(responseContent);
         responseContent += data;
       });
+
       
       //When all data is received
       response.on("end", ()=>{
@@ -146,6 +148,7 @@ app.route('/')
           jsonResp,
           arrCharacters
         };
+
         
         //Rendering home
         res.render("home", params);
