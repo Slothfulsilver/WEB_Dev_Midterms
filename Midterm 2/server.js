@@ -165,7 +165,7 @@ app.route('/')
 //Making route /search for the character search bar
 app.route('/search')
   .get((req, res)=>{
-    var name = req.query.name;
+    var name = req.query.uName;
     console.log(`Characters found: ${foundCharacters.length}`)
     //If there are any characters found, render the found ejs
     if(foundCharacters.length > 0){
@@ -193,6 +193,7 @@ app.route('/search')
   })
   .post((req, res)=>{
     //Splitting into a list the input name
+    var uName = req.body.name;
     var name = req.body.name.split(' ');
     foundCharacters = [];
     
@@ -233,7 +234,7 @@ app.route('/search')
     }
 
     //Redirecting to the GET function of the same route (/search) with "name" as a query parameter
-    res.redirect(`/search?name=${name}`);
+    res.redirect(`/search?name=${uName}`);
   });
 
 
