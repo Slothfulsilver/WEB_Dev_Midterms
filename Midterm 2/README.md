@@ -1,0 +1,1 @@
+Hello! and welcome to our Star Wars Wiki :3
