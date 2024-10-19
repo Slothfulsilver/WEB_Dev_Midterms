@@ -12,80 +12,21 @@
 
 <div class="container-fluid">
   <div class="row row-cols-xs-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 row-cols-xl-10 g-3">
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Leia Organa</h3>
-          <div class="affiliation rebel">Rebel Alliance</div>
+    <% if (locals.arrCharacters && arrCharacters.length > 0) { %>
+      <% arrCharacters.forEach((char, index) => { %>
+        <div class="col">
+          <div class="card">
+            <img src="<%= char.image %>" alt="Darth Vader" class="card-img-top">
+            <div class="card-body text-center">
+              <h3><%= char.name %></h3>
+              <div class="affiliation rebel"><%= char.affl[0] %></div>
+            </div>
+          </div>    
         </div>
-      </div>    
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Leia Organa</h3>
-          <div class="affiliation rebel">Rebel Alliance</div>
-        </div>
-      </div>    
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Leia Organa</h3>
-          <div class="affiliation rebel">Rebel Alliance</div>
-        </div>
-      </div>    
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Darth Vader</h3>
-          <div class="affiliation sith">Rebel Alliance</div>
-        </div>
-      </div>    
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Darth Vader</h3>
-          <div class="affiliation rebel">Rebel Alliance</div>
-        </div>
-      </div>    
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Darth Vader</h3>
-          <div class="affiliation rebel">Rebel Alliance</div>
-        </div>
-      </div>    
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Darth Vader</h3>
-          <div class="affiliation rebel">Rebel Alliance</div>
-        </div>
-      </div>    
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://placehold.co/200x250" alt="Darth Vader" class="card-img-top">
-        <div class="card-body text-center">
-          <h3>Darth Vader</h3>
-          <div class="affiliation rebel">Rebel Alliance</div>
-        </div>
-      </div>    
-    </div>
+      <% }) %>
+    <% } %>
   </div>
-
+</div>
  
 
 <%- include("partials/footer"); -%>
