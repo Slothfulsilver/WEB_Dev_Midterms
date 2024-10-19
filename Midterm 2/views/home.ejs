@@ -2,6 +2,8 @@
 
 <%- include("partials/nav"); -%>
 
+
+
 <div class="container-fluid">
   <div class="row row-cols-xs-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 pt-5">
     <% if (locals.arrCharacters && arrCharacters.length > 0) { %>
@@ -20,5 +22,19 @@
   </div>
 </div>
  
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link">Previous</a>
+    </li>
+    <%# We can create the buttons via some js using a loop %>>
+    
+    <li class="page-item" aria-current="page"><a class="page-link" href="#">1</a></li>
+
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
 <%- include("partials/footer"); -%>

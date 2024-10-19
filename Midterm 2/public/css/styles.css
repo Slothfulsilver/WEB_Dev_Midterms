@@ -119,15 +119,24 @@ body {
 }
 
 #char{
-  background-color: #2e2e2e;
+  background-color: rgba(46, 46, 46, .6);
 }
 
 #charImg {
   max-width: 100%;
   border: solid #ffd500;
   border-radius: 10%;
+  box-shadow: 0 4px 8px #ffd500;
 
 }
 
-#main_data {
+.charHeaders {
+  background-color: #ffd500;
+  border: solid #f8f8e6;
+  color: #111;
+}
+
+.data {
+  background-color: #111;
+  border: solid #fcfcb5;
 }
