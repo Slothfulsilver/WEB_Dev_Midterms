@@ -1,0 +1,61 @@
+<%- include("partials/header"); -%>
+
+<%- include("partials/nav"); -%>
+
+
+<div class="container">
+    <div class="container" id="char">
+        <h2><%= foundCharacters[0].name %></h2> 
+        <a href="<%= foundCharacters[0].linkWiki %>" target="_blank">Link to the wiki</a>
+        <p>ID: <%= foundCharacters[0].id %> </p>
+    </div>
+    <div>   
+        <img src="<%= foundCharacters[0].image %>" alt="charImg" id="charImg"/>
+        <div id="main_data">
+            <p> Gender: <%= foundCharacters[0].gender %><br>
+                Height: <%= foundCharacters[0].height %> <br>
+                Species: <%= foundCharacters[0].species %><br>
+                Mass: <%= foundCharacters[0].mass %><br>
+                Year of Birth: <%= foundCharacters[0].birth %><br>
+                Year of Death: <%= foundCharacters[0].death %><br>
+                Skin Color: <%= foundCharacters[0].skinColor %>
+            </p>
+            <div id="lists">
+                <div class="list" id="list1">
+                    <p>affiliations</p>
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <div class="list" id="list2">
+                    <p>masters</p>
+                    <ul>
+                       
+                    </ul>
+                </div>
+                <div class="list" id="list3">
+                    <p>former affiliations</p>
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <div class="list" id="list4">
+                    <p>apprentices</p>
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<%- include("partials/footer"); -%>

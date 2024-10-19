@@ -45,15 +45,32 @@ body {
   border-radius: 0 0 10px 10px;
 }
 
-/* Affiliation Colors */
-.jedi {
-  background-color: #00ff00;
+#not-found{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-weight: 400;
+  font-size: larger;
 }
 
-.sith {
-  background-color: #ff0000;
+#main_data{
+  display: inline-block;
 }
 
-.rebel {
-  background-color: #0000ff;
+.list {
+  display: table-cell;
+}
+
+#main_data {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  
+}
+
+#charImg {
+  height: 400px;
+  border: solid #ffd500;
+  padding: 5px;
+  border-radius: 50px;
 }
