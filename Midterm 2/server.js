@@ -241,6 +241,25 @@ app.route('/search')
     res.redirect(`/search?name=${uName}`);
   });
 
+  app.route('/character')
+    .get((req, res)=>{
+      var id = req.query.id;
+      if (id < 17){
+        var hero = arrCharacters[id-1];
+        console.log(hero);
+      }
+      else{
+        var hero = arrCharacters[id-2];
+        console.log(hero);
+      }
+      
+      
+      var params = {
+        hero
+      };
+      res.render("charPage", params);
+    })
+
 
 //Listening port 3000
 app.listen(3000);

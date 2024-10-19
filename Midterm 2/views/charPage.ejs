@@ -4,30 +4,30 @@
 
 <div class="container pt-5 found">
     <div class="container" id="char">
-        <h2><%= foundCharacters[0].name %></h2> 
-        <a href="<%= foundCharacters[0].linkWiki %>" target="_blank">Link to the wiki</a>
-        <p>ID: <%= foundCharacters[0].id %> </p>
+        <h2><%= hero.name %></h2> 
+        <a href="<%= hero.linkWiki %>" target="_blank">Link to the wiki</a>
+        <p>ID: <%= hero.id %> </p>
     </div>
     <div id="char">
         <div class="container">
             <div class="row">
                 <div class="col-4">
-                    <img src="<%= foundCharacters[0].image %>" alt="charImg" id="charImg"/>
+                    <img src="<%= hero.image %>" alt="charImg" id="charImg"/>
                 </div>
                 <div class="col-8" id="main_data">
-                    <p> Gender: <%= foundCharacters[0].gender %><br>
-                        Height: <%= foundCharacters[0].height %> <br>
-                        Species: <%= foundCharacters[0].species %><br>
-                        Mass: <%= foundCharacters[0].mass %><br>
-                        Year of Birth: <%= foundCharacters[0].birth %><br>
-                        Year of Death: <%= foundCharacters[0].death %><br>
-                        Home World: <%= foundCharacters[0].homeWorld %> <br>
-                        Skin Color: <%= foundCharacters[0].skinColor %> <br>
+                    <p> Gender: <%= hero.gender %><br>
+                        Height: <%= hero.height %> <br>
+                        Species: <%= hero.species %><br>
+                        Mass: <%= hero.mass %><br>
+                        Year of Birth: <%= hero.birth %><br>
+                        Year of Death: <%= hero.death %><br>
+                        Home World: <%= hero.homeWorld %> <br>
+                        Skin Color: <%= hero.skinColor %> <br>
                         Extras:
-                        <% if (foundCharacters[0].extra) { %>
-                            <% foundCharacters[0].extra.forEach((char, index) => { %>
+                        <% if (hero.extra) { %>
+                            <% hero.extra.forEach((val, index) => { %>
                                 <ul>
-                                <li><%= char %></li>
+                                <li><%= val %></li>
                                 </ul>
                             <% }) %>
                         <% } else { %>
@@ -52,13 +52,9 @@
                         <div class="row pt-5">
                             <div class="col-3">
                                 <ul>
-                                    <% if (foundCharacters) { %>
-                                        <% foundCharacters.forEach((char) => { %>
-                                            <li><%= char.affl %></li>
-                                        <% }) %>
-                                    <% } else { %>
-                                        <p>No extra data found</p>
-                                    <% } %>
+                                    <%hero.affl.forEach((val, i)=>{%>
+                                        <li><%= val %></li>
+                                    <%});%>
                                 </ul>
                             </div>
                             <div class="col-3">
