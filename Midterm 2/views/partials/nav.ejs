@@ -1,11 +1,9 @@
-<div class="navDiv mb-5">
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand">The Galaxy Wiki</a>
-      <form class="d-flex" action="/search" method="POST">
-        <input class="form-control me-2" type="text" id="searchBar" name="name" placeholder="Search" aria-label="Search" data-bs-theme="dark">
-        <button class="btn btn-outline-success" data-bs-theme="dark" type="submit" id="search">Search</button>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" id="search">Search</button>
       </form>
     </div>
   </nav>
-</div>
