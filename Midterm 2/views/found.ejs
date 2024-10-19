@@ -2,106 +2,37 @@
 
 <%- include("partials/nav"); -%>
 
-
-
-<div class="container pt-5 found text-center">
-    <div class="container" id="char">
-        <h2><%= foundCharacters[0].name %></h2> 
-        <a href="<%= foundCharacters[0].linkWiki %>" target="_blank">Link to the wiki</a>
-        <p>ID: <%= foundCharacters[0].id %> </p>
-    </div>
-    <div id="char">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <img src="<%= foundCharacters[0].image %>" alt="charImg" id="charImg"/>
-                </div>
-                <div class="col-8" id="main_data">
-                    <p> Gender: <%= foundCharacters[0].gender %><br>
-                        Height: <%= foundCharacters[0].height %> <br>
-                        Species: <%= foundCharacters[0].species %><br>
-                        Mass: <%= foundCharacters[0].mass %><br>
-                        Year of Birth: <%= foundCharacters[0].birth %><br>
-                        Year of Death: <%= foundCharacters[0].death %><br>
-                        Home World: <%= foundCharacters[0].homeWorld %> <br>
-                        Skin Color: <%= foundCharacters[0].skinColor %> <br>
-                        Extras:
-                        <% if (foundCharacters[0].extra) { %>
-                            <% foundCharacters[0].extra.forEach((char, index) => { %>
-                                <p><%= char %></p> <br>
-                            <% }) %>
-                        <% } else { %>
-                            <p>No extra data found</p>
-                        <% } %>
-                    </p>
-                    <div class="container-fluid">
-                        <div class="row pt-3 charHeaders text-center">
-                          <div class="col-3">
-                            <p>Affiliations</p>
-                          </div>
-                          <div class="col-3">
-                            <p>Former Affiliations</p>
-                          </div>
-                          <div class="col-3">
-                            <p>Masters</p>
-                          </div>
-                          <div class="col-3">
-                            <p>Apprentices</p>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3 data">
-                                <ul>
-                                    <% if (foundCharacters[0].affl) { %>
-                                        <% foundCharacters[0].affl.forEach((char, index) => { %>
-                                            <li><%= char %></li>
-                                        <% }) %>
-                                    <% } else { %>
-                                        <p>No extra data found</p>
-                                    <% } %>
-                                </ul>
-                            </div>
-                            <div class="col-3 data">
-                                <ul>
-                                    <% if (foundCharacters[0].formAffl) { %>
-                                        <% foundCharacters[0].formAffl.forEach((char, index) => { %>
-                                            <li><%= char %></li>
-                                        <% }) %>
-                                    <% } else { %>
-                                        <p>No extra data found</p>
-                                    <% } %>
-                                </ul>
-                            </div>
-                            <div class="col-3 data">
-                                <ul>
-                                    <% if (foundCharacters[0].masters) { %>
-                                        <% foundCharacters[0].masters.forEach((char, index) => { %>
-                                            <li><%= char %></li>
-                                        <% }) %>
-                                    <% } else { %>
-                                        <p>No extra data found</p>
-                                    <% } %>
-                                </ul>
-                            </div>
-                            <div class="col-3 data">
-                                <ul>
-                                    <% if (foundCharacters[0].apprentices) { %>
-                                        <% foundCharacters[0].apprentices.forEach((char, index) => { %>
-                                            <li><%= char %></li>
-                                        <% }) %>
-                                    <% } else { %>
-                                        <p>No extra data found</p>
-                                    <% } %>
-                                </ul>
-                            </div>
-                          </div>
-                    </div>
-                </div>
+<div class="container-fluid">
+  <div class="row row-cols-xs-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 pt-5">
+    <% if (locals.foundCharacters && foundCharacters.length > 0) { %>
+      <% foundCharacters.forEach((char, index) => { %>
+        <div class="col m-4" onclick="redirectToGetRoute(`<%=char.id%>`)">
+          <div class="card text-center border-warning">
+            <img src="<%= char.image %>" alt="Darth Vader" class="card-img-top">
+              <h5 class="card-title mt-3"><%= char.name %></h3>
+              <p class="card-text affiliation"><%= char.affl[0] %></p>
             </div>
-        </div>
+          </div>    
         
-       
-    </div>
-</div>
+      <% }) %>
+      </div>
+    <% } %>
+  </div>
+ 
+<nav aria-label="page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item active">
+      <a class="page-link">Previous</a>
+    </li>
+
+    <%# We can create the buttons via some js using a loop %>
+
+    <li class="page-item" aria-current="page"><a class="page-link" href="#">1</a></li>
+
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
 <%- include("partials/footer"); -%>

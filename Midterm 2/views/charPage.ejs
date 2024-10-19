@@ -2,7 +2,9 @@
 
 <%- include("partials/nav"); -%>
 
-<div class="container pt-5 found">
+
+
+<div class="container pt-5 found text-center">
     <div class="container" id="char">
         <h2><%= hero.name %></h2> 
         <a href="<%= hero.linkWiki %>" target="_blank">Link to the wiki</a>
@@ -25,17 +27,15 @@
                         Skin Color: <%= hero.skinColor %> <br>
                         Extras:
                         <% if (hero.extra) { %>
-                            <% hero.extra.forEach((val, index) => { %>
-                                <ul>
-                                <li><%= val %></li>
-                                </ul>
+                            <% hero.extra.forEach((char, index) => { %>
+                                <p><%= char %></p> <br>
                             <% }) %>
                         <% } else { %>
                             <p>No extra data found</p>
                         <% } %>
                     </p>
-                    <div class="container-fluid text-center">
-                        <div class="row pt-5">
+                    <div class="container-fluid">
+                        <div class="row pt-3 charHeaders text-center">
                           <div class="col-3">
                             <p>Affiliations</p>
                           </div>
@@ -49,22 +49,67 @@
                             <p>Apprentices</p>
                           </div>
                         </div>
-                        <div class="row pt-5">
-                            <div class="col-3">
+                        <div class="row">
+                            <div class="col-3 data">
                                 <ul>
-                                    <%hero.affl.forEach((val, i)=>{%>
-                                        <li><%= val %></li>
-                                    <%});%>
+                                    <% if (hero.affl && hero.affl.length > 0 && hero.affl != "NA") { %>
+                                        <%if(hero.affl.length > 1 && Array.isArray(hero.affl)) {%>
+                                            <% hero.affl.forEach((char, index) => { %>
+                                                <li><%= char %></li>
+                                            <% });%>
+                                        <%}else{%>
+                                            <li><%= hero.affl %></li>
+                                            <%}%>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
                                 </ul>
                             </div>
-                            <div class="col-3">
-                              <p>Former Affiliations</p>
+                            <div class="col-3 data">
+                                <ul>
+                                    <% if (hero.formAffl && hero.formAffl.length > 0 && hero.formAffl != "NA") { %>
+                                        <%if(hero.formAffl.length > 1 && Array.isArray(hero.formAffl)) {%>
+                                            <% hero.formAffl.forEach((char, index) => { %>
+                                                <li><%= char %></li>
+                                            <% });%>
+                                        <%}else{%>
+                                            <li><%= hero.formAffl %></li>
+                                            <%}%>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
-                            <div class="col-3">
-                              <p>Masters</p>
+                            <div class="col-3 data">
+                                <ul>
+                                    <% if (hero.masters && hero.masters.length > 0 && hero.masters !== "NA") { %>
+
+                                        <%if(hero.masters.length > 1 && Array.isArray(hero.masters)) {%>
+                                            <% hero.masters.forEach((char, index) => { %>
+                                                <li><%= char %></li>
+                                            <% });%>
+                                        <%}else{%>
+                                            <li><%= hero.masters %></li>
+                                            <%}%>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
-                            <div class="col-3">
-                              <p>Apprentices</p>
+                            <div class="col-3 data">
+                                <ul>
+                                    <% if (hero.apprentices && hero.apprentices.length > 0 && hero.apprentices != "NA") { %>
+                                        <%if(hero.apprentices.length > 1 && Array.isArray(hero.apprentices)) {%>
+                                            <% hero.apprentices.forEach((char, index) => { %>
+                                                <li><%= char %></li>
+                                            <% });%>
+                                        <%}else{%>
+                                            <li><%= hero.apprentices %></li>
+                                            <%}%>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
                           </div>
                     </div>
