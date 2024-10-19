@@ -18,147 +18,147 @@ var foundCharacters = [];
 //Including the api call on the GET method for the root
 app.route('/')
   .get(async (req, res) => {
-    //Var with URL for API call
+    // Var with URL for API call
     var swCall = `https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json`;
-
+    const pageSize = 11; // Number of characters per page
     arrCharacters = [];
-    //API CALL
-    await https.get(swCall, (response=>{
-      console.log("Got a response from swCall");
-      console.log(response.statusCode);
-      
-      //Receiving API data
-      var responseContent="";
-      response.on("data", (data) => {
-        console.log(responseContent);
-        responseContent += data;
-      });
 
-      
-      //When all data is received
-      response.on("end", ()=>{
-          var jsonResp = JSON.parse
-        (responseContent);
-
-      //Getting info for all characters
-      for(let i of jsonResp){
-
-        //Initializing JSON type Character
-        var character = {
-          //Must have parameters
-          id: "NA",
-          name: "NA",
-          gender: "NA",
-          height: "NA",
-          image: "NA",
-          linkWiki: "NA",
-          species: "NA",
-
-          //Should but may have parameters
-          mass: "NA",
-          birth: "NA",
-          death: "NA",
-          skinColor: "NA",
-          
-          //May not have parameters
-          homeWorld: "NA",
-          affl: "NA",
-          formAffl: "NA",
-          masters: "NA",
-          apprentices: "NA",
-    
-          //EXTRA
-          extra: []
-      };
-
-        //All parameters every charachter should have
-        if (i.id){character.id = i.id;}
-        if (i.name){character.name = i.name;}
-        if (i.gender){character.gender = i.gender;}
-        if (i.height){character.height = i.height + " m";}
-        if (i.image){character.image = i.image;}
-        if (i.wiki){character.linkWiki = i.wiki;}
-        if (i.species){character.species = i.species;}
+    // API CALL
+    await https.get(swCall, (response => {
+        console.log("Got a response from swCall");
+        console.log(response.statusCode);
         
-        //Parameters characters should have but they may not have
-        if (i.mass){character.mass = i.mass + " kg";}
-        if (i.born){character.birth = i.born;}
-        if (i.died){ character.death = i.died;}
-        if(i.skinColor){character.skinColor = i.skinColor;}
-        
-        //Less likely parameters for every character it would be awesome for them to have
-        if (i.homeworld) {character.homeWorld = i.homeworld;}
-        if (i.affiliations) {character.affl = i.affiliations;}
-        if (i.formerAffiliations){ character.formAffl = i.formerAffiliations;}
-        if (i.masters) {character.masters = i.masters;}
-        if (i.apprentices) {character.apprentices = i.apprentices;}
-        
+        // Receiving API data
+        let responseContent = "";
+        response.on("data", (data) => {
+            responseContent += data;
+        });
 
-        
-        //Special treatment of characteristics for wookiees
-        if(character.species == "wookiee"){
-          if(i.hairColor){character.skinColor = i.hairColor + " hair";}
-        }
-        //Special treatment of characteristics for droids
-        if(character.species == "droid"){
-          if(i.platingColor){character.skinColor = i.platingColor;}
-          if(i.dateDestroyed){character.death = i.dateDestroyed;}
+        // When all data is received
+        response.on("end", () => {
+            var jsonResp = JSON.parse(responseContent);
 
-          //Special treatment of characteristics for droid extras
-          if(i.manufacturer){character.extra.push(`Manufacturer: ${i.manufacturer}`);}
-          if(i.destroyedLocation){character.extra.push(`Destroyed Location: ${i.destroyedLocation}`);}
-          if(i.class){character.extra.push(`Class: ${i.class}`);}
-        }
-        else{
-          //Adding extras for every species except droids
-          if(i.cybernetics){character.extra.push(`Cybernetics: ${i.cybernetics}`);}
-          if(i.hairColor){character.extra.push(`Hair color: ${i.hairColor}`);} 
-          if(i.eyeColor){character.extra.push(`Eye Color: ${i.eyeColor}`);}
-        }
+            // Getting info for all characters
+            for (let i of jsonResp) {
+                // Initializing JSON type Character
+                var character = {
+                    id: "NA",
+                    name: "NA",
+                    gender: "NA",
+                    height: "NA",
+                    image: "NA",
+                    linkWiki: "NA",
+                    species: "NA",
+                    mass: "NA",
+                    birth: "NA",
+                    death: "NA",
+                    skinColor: "NA",
+                    homeWorld: "NA",
+                    affl: "NA",
+                    formAffl: "NA",
+                    masters: "NA",
+                    apprentices: "NA",
+                    extra: []
+                };
 
-        //Turning year of birth into a cannonically accurate format
-        if(character.birth != "NA"){
-          if(character.birth < 0){
-            character.birth = String(-1*parseInt(character.birth)) + " BBY";
-          }
-          else{
-            character.birth = character.birth + " ABY";
-          }
-        }
+                // All parameters every character should have
+                if (i.id) { character.id = i.id; }
+                if (i.name) { character.name = i.name; }
+                if (i.gender) { character.gender = i.gender; }
+                if (i.height) { character.height = i.height + " m"; }
+                if (i.image) { character.image = i.image; }
+                if (i.wiki) { character.linkWiki = i.wiki; }
+                if (i.species) { character.species = i.species; }
 
-        //Turning year of death into a cannonically accurate format
-        if(character.death != "NA"){
-          if(character.death < 0){
-            character.death = String(-1*parseInt(character.death)) + " BBY";
-          }
-          else{
-            character.death = character.death + " ABY";
-          }
-        }
-      
-      //Introducing the character into the character array
-      arrCharacters.push(character);
-        
-      };
+                // Parameters characters should have but may not have
+                if (i.mass) { character.mass = i.mass + " kg"; }
+                if (i.born) { character.birth = i.born; }
+                if (i.died) { character.death = i.died; }
+                if (i.skinColor) { character.skinColor = i.skinColor; }
 
-      //Revising that the data was well inserted
-      console.log(arrCharacters);
-      console.log(arrCharacters.length);
+                // Less likely parameters for every character it would be awesome for them to have
+                if (i.homeworld) { character.homeWorld = i.homeworld; }
+                if (i.affiliations) { character.affl = i.affiliations; }
+                if (i.formerAffiliations) { character.formAffl = i.formerAffiliations; }
+                if (i.masters) { character.masters = i.masters; }
+                if (i.apprentices) { character.apprentices = i.apprentices; }
 
-      var params = {
-          jsonResp,
-          arrCharacters
-        };
+                // Special treatment of characteristics for wookiees
+                if (character.species == "wookiee") {
+                    if (i.hairColor) { character.skinColor = i.hairColor + " hair"; }
+                }
+                // Special treatment of characteristics for droids
+                if (character.species == "droid") {
+                    if (i.platingColor) { character.skinColor = i.platingColor; }
+                    if (i.dateDestroyed) { character.death = i.dateDestroyed; }
 
-        
-        //Rendering home
-        res.render("home", params);
+                    // Special treatment of characteristics for droid extras
+                    if (i.manufacturer) { character.extra.push(`Manufacturer: ${i.manufacturer}`); }
+                    if (i.destroyedLocation) { character.extra.push(`Destroyed Location: ${i.destroyedLocation}`); }
+                    if (i.class) { character.extra.push(`Class: ${i.class}`); }
+                } else {
+                    // Adding extras for every species except droids
+                    if (i.cybernetics) { character.extra.push(`Cybernetics: ${i.cybernetics}`); }
+                    if (i.hairColor) { character.extra.push(`Hair color: ${i.hairColor}`); }
+                    if (i.eyeColor) { character.extra.push(`Eye Color: ${i.eyeColor}`); }
+                }
 
-      }).on("error", (e)=>{
-        res.send("Error: $(e.message");
-      });
+                // Turning year of birth into a canonically accurate format
+                if (character.birth != "NA") {
+                    if (character.birth < 0) {
+                        character.birth = String(-1 * parseInt(character.birth)) + " BBY";
+                    } else {
+                        character.birth = character.birth + " ABY";
+                    }
+                }
+
+                // Turning year of death into a canonically accurate format
+                if (character.death != "NA") {
+                    if (character.death < 0) {
+                        character.death = String(-1 * parseInt(character.death)) + " BBY";
+                    } else {
+                        character.death = character.death + " ABY";
+                    }
+                }
+
+                // Introducing the character into the character array
+                arrCharacters.push(character);
+            }
+
+            // Revising that the data was well inserted
+            console.log(arrCharacters);
+            console.log(arrCharacters.length);
+
+            // Pagination logic
+            const totalCharacters = arrCharacters.length;
+            const totalPages = Math.ceil(totalCharacters / pageSize);
+            let page = parseInt(req.query.page) || 1; // Get the current page from query parameters
+
+            // Wrap around for pages
+            page = ((page - 1 + totalPages) % totalPages) + 1; // Ensure the page is within bounds
+
+            // Get the characters for the current page
+            const startIndex = (page - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const paginatedCharacters = arrCharacters.slice(startIndex, endIndex);
+
+            // Render the home view with pagination data
+            var params = {
+                jsonResp,
+                arrCharacters: paginatedCharacters,
+                totalPages,
+                currentPage: page
+            };
+
+            // Rendering home
+            res.render("home", params);
+
+        }).on("error", (e) => {
+            res.send(`Error: ${e.message}`);
+        });
     }));
   })
+
 
   //POST method for root
   .post((req, res) => {
