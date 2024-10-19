@@ -49,6 +49,28 @@
                             <p>Apprentices</p>
                           </div>
                         </div>
+                        <div class="row pt-5">
+                            <div class="col-3">
+                                <ul>
+                                    <% if (foundCharacters) { %>
+                                        <% foundCharacters.forEach((char) => { %>
+                                            <li><%= char.affl %></li>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
+                            </div>
+                            <div class="col-3">
+                              <p>Former Affiliations</p>
+                            </div>
+                            <div class="col-3">
+                              <p>Masters</p>
+                            </div>
+                            <div class="col-3">
+                              <p>Apprentices</p>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </div>
