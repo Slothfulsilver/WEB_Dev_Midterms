@@ -16,10 +16,26 @@ body {
     
 }
 
+.form-control{
+  transition: transform 0.1s ease-in-out;
+
+}
+
+.form-control:hover{
+  border-color: #ffd500 !important;
+  color: #ffd500 !important;
+  box-shadow: 0 5px 15px #ffd50077;
+}
+
 .buttonSound{
   background-color: transparent;
   border-color: transparent;
   color: #ffd500;
+  transition: transform 0.05s ease-in-out;
+}
+
+.buttonSound:hover{
+  color: #f8f8e6;
 }
 
 
