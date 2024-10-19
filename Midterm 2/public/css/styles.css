@@ -1,10 +1,9 @@
 body {
     background-color: #2e2e2e;
-    font-family: "Zen Dots", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #ffd500;
-
+    font-family: "Plus Jakarta Sans", serif;
     /*https://cdnb.artstation.com/p/assets/images/images/055/416/263/large/arpx-ombodi-4.jpg?1666886399*/
     /*https://wallpapercat.com/w/full/8/2/a/466333-3840x2160-desktop-4k-death-star-star-wars-wallpaper.jpg*/
     /*https://i.pinimg.com/originals/ec/e9/50/ece9508cfaaa2a93d1cd046999dacd01.jpg*/
@@ -54,6 +53,10 @@ body {
 
 .navbar-brand {
     color: #ffd500;
+}
+
+.navbar-brand, .card-title, h2 {
+  font-family: "Zen Dots", sans-serif;
 }
 
 .navbar-brand:hover{

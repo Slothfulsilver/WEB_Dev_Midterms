@@ -23,7 +23,7 @@
                         Year of Death: <%= foundCharacters[0].death %><br>
                         Home World: <%= foundCharacters[0].homeWorld %> <br>
                         Skin Color: <%= foundCharacters[0].skinColor %> <br>
-                        Extras: <%= foundCharacters[0].extra %>
+                        Extras:
                         <% if (foundCharacters[0].extra) { %>
                             <% foundCharacters[0].extra.forEach((char, index) => { %>
                                 <ul>
@@ -52,9 +52,9 @@
                         <div class="row pt-5">
                             <div class="col-3">
                                 <ul>
-                                    <% if (foundCharacters) { %>
-                                        <% foundCharacters.forEach((char) => { %>
-                                            <li><%= char.affl %></li>
+                                    <% if (foundCharacters[0].affl) { %>
+                                        <% foundCharacters[0].affl.forEach((char, index) => { %>
+                                            <li><%= char %></li>
                                         <% }) %>
                                     <% } else { %>
                                         <p>No extra data found</p>
@@ -62,13 +62,37 @@
                                 </ul>
                             </div>
                             <div class="col-3">
-                              <p>Former Affiliations</p>
+                                <ul>
+                                    <% if (foundCharacters[0].formerAffiliations) { %>
+                                        <% foundCharacters[0].formerAffiliations.forEach((char, index) => { %>
+                                            <li><%= char %></li>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
                             <div class="col-3">
-                              <p>Masters</p>
+                                <ul>
+                                    <% if (foundCharacters[0].masters) { %>
+                                        <% foundCharacters[0].masters.forEach((char, index) => { %>
+                                            <li><%= char %></li>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
                             <div class="col-3">
-                              <p>Apprentices</p>
+                                <ul>
+                                    <% if (foundCharacters[0].apprentices) { %>
+                                        <% foundCharacters[0].apprentices.forEach((char, index) => { %>
+                                            <li><%= char %></li>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
                           </div>
                     </div>
