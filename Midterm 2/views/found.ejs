@@ -2,7 +2,9 @@
 
 <%- include("partials/nav"); -%>
 
-<div class="container pt-5 found">
+
+
+<div class="container pt-5 found text-center">
     <div class="container" id="char">
         <h2><%= foundCharacters[0].name %></h2> 
         <a href="<%= foundCharacters[0].linkWiki %>" target="_blank">Link to the wiki</a>
@@ -26,16 +28,14 @@
                         Extras:
                         <% if (foundCharacters[0].extra) { %>
                             <% foundCharacters[0].extra.forEach((char, index) => { %>
-                                <ul>
-                                <li><%= char %></li>
-                                </ul>
+                                <p><%= char %></p> <br>
                             <% }) %>
                         <% } else { %>
                             <p>No extra data found</p>
                         <% } %>
                     </p>
-                    <div class="container-fluid text-center">
-                        <div class="row pt-5">
+                    <div class="container-fluid">
+                        <div class="row pt-3 charHeaders text-center">
                           <div class="col-3">
                             <p>Affiliations</p>
                           </div>
@@ -49,26 +49,50 @@
                             <p>Apprentices</p>
                           </div>
                         </div>
-                        <div class="row pt-5">
-                            <div class="col-3">
+                        <div class="row">
+                            <div class="col-3 data">
                                 <ul>
-                                    <% if (foundCharacters) { %>
-                                        <% foundCharacters.forEach((char) => { %>
-                                            <li><%= char.affl %></li>
+                                    <% if (foundCharacters[0].affl) { %>
+                                        <% foundCharacters[0].affl.forEach((char, index) => { %>
+                                            <li><%= char %></li>
                                         <% }) %>
                                     <% } else { %>
                                         <p>No extra data found</p>
                                     <% } %>
                                 </ul>
                             </div>
-                            <div class="col-3">
-                              <p>Former Affiliations</p>
+                            <div class="col-3 data">
+                                <ul>
+                                    <% if (foundCharacters[0].formAffl) { %>
+                                        <% foundCharacters[0].formAffl.forEach((char, index) => { %>
+                                            <li><%= char %></li>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
-                            <div class="col-3">
-                              <p>Masters</p>
+                            <div class="col-3 data">
+                                <ul>
+                                    <% if (foundCharacters[0].masters) { %>
+                                        <% foundCharacters[0].masters.forEach((char, index) => { %>
+                                            <li><%= char %></li>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
-                            <div class="col-3">
-                              <p>Apprentices</p>
+                            <div class="col-3 data">
+                                <ul>
+                                    <% if (foundCharacters[0].apprentices) { %>
+                                        <% foundCharacters[0].apprentices.forEach((char, index) => { %>
+                                            <li><%= char %></li>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <p>No extra data found</p>
+                                    <% } %>
+                                </ul>
                             </div>
                           </div>
                     </div>

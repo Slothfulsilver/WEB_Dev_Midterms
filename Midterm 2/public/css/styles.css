@@ -1,10 +1,9 @@
 body {
     background-color: #2e2e2e;
-    font-family: "Zen Dots", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #ffd500;
-
+    font-family: "Plus Jakarta Sans", serif;
     /*https://cdnb.artstation.com/p/assets/images/images/055/416/263/large/arpx-ombodi-4.jpg?1666886399*/
     /*https://wallpapercat.com/w/full/8/2/a/466333-3840x2160-desktop-4k-death-star-star-wars-wallpaper.jpg*/
     /*https://i.pinimg.com/originals/ec/e9/50/ece9508cfaaa2a93d1cd046999dacd01.jpg*/
@@ -15,6 +14,12 @@ body {
     background-attachment: fixed;
     
 }
+
+/*
+/////////////////////////////////
+Navbar styles
+/////////////////////////////////
+*/
 
 .form-control{
   transition: transform 0.1s ease-in-out;
@@ -56,6 +61,10 @@ body {
     color: #ffd500;
 }
 
+.navbar-brand, .card-title, h2 {
+  font-family: "Zen Dots", sans-serif;
+}
+
 .navbar-brand:hover{
   color: #f8f8e6;
 }
@@ -68,6 +77,12 @@ body {
   transform: scale(1.1);
   box-shadow: 0 4px 8px #ffd818b7;
 }
+
+/*
+/////////////////////////////////
+Card styles
+/////////////////////////////////
+*/
 
 .card {
   background-image: url('https://i.pinimg.com/474x/be/94/d2/be94d26cb4f6b8be905caab8041d7157.jpg'); 
@@ -110,6 +125,12 @@ body {
   border-radius: 0 0 10px 10px;
 }
 
+/*
+/////////////////////////////////
+Not found page styles
+/////////////////////////////////
+*/
+
 #not-found{
   position: fixed;
   top: 50%;
@@ -120,16 +141,66 @@ body {
   font-size: larger;
 }
 
+/*
+/////////////////////////////////
+Single character page styles
+/////////////////////////////////
+*/
+
 #char{
-  background-color: #2e2e2e;
+  background-color: rgba(46, 46, 46, .6);
 }
 
 #charImg {
   max-width: 100%;
   border: solid #ffd500;
   border-radius: 10%;
+  box-shadow: 0 4px 8px #ffd500;
 
 }
 
-#main_data {
+.charHeaders {
+  background-color: #ffd500;
+  border: solid #f8f8e6;
+  color: #111;
+}
+
+.data {
+  background-color: #111;
+  border: solid #fcfcb5;
+}
+
+
+/*
+/////////////////////////////////
+Pagination Styles
+/////////////////////////////////
+*/
+
+
+
+.page-item .page-link {
+  color: #111;
+  background-color: #ffd500;
+  border: 2px solid #ffd500;
+}
+
+.page-item .page-link:hover {
+  background-color: #111;
+  color: #f8f8e6;
+  border: 2px solid #ffd500;
+}
+
+.page-item.active .page-link {
+  background-color: #111;
+  color: #f8f8e6;
+  border: 2px solid #ffd500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #ffe082;
+  border-color: 2px solid #ffd500;
 }
