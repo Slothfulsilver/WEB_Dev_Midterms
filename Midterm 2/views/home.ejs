@@ -5,7 +5,7 @@
   <div class="row row-cols-xs-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 pt-5">
     <% if (arrCharacters && arrCharacters.length > 0) { %>
       <% arrCharacters.forEach((char) => { %>
-        <div class="col m-4" onclick="redirectToGetRoute(`<%= char.id %>`)">
+        <div class="col m-4" onclick="redirectToGetRoute(`<%= char.id %>`, `<%=currentPage = currentPage%>`)">
           <div class="card text-center border-warning">
             <img src="<%= char.image %>" alt="<%= char.name %>" class="card-img-top">
             <h5 class="card-title mt-3"><%= char.name %></h5>

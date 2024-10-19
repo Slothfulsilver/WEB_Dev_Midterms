@@ -244,6 +244,11 @@ app.route('/search')
   app.route('/character')
     .get((req, res)=>{
       var id = req.query.id;
+      var currentPage = 0;
+      if(req.query.currentPage){
+        currentPage = req.query.currentPage;
+      };
+      
       if (id < 17){
         var hero = arrCharacters[id-1];
         console.log(hero);
@@ -255,7 +260,8 @@ app.route('/search')
       
       
       var params = {
-        hero
+        hero,
+        currentPage
       };
       res.render("charPage", params);
     })

@@ -6,8 +6,8 @@ function playSound() {
     }
 }
 
-function redirectToGetRoute(id) {
+function redirectToGetRoute(id, currentPage) {
     // Redirect to the desired GET route (for example: '/some-route')
-    window.location.href = '/character?id=' + encodeURIComponent(id);
+    window.location.href = '/character?id=' + encodeURIComponent(id) + "&currentPage=" + encodeURIComponent(currentPage);
 }
 
