@@ -23,10 +23,12 @@
                         Year of Death: <%= foundCharacters[0].death %><br>
                         Home World: <%= foundCharacters[0].homeWorld %> <br>
                         Skin Color: <%= foundCharacters[0].skinColor %> <br>
-                        Extras: <%= foundCharacters.extra %>
-                        <% if (foundCharacters.extra) { %>
-                            <% foundCharacters.forEach((char, index) => { %>
-                                <p><%= char.extra %></p>
+                        Extras: <%= foundCharacters[0].extra %>
+                        <% if (foundCharacters[0].extra) { %>
+                            <% foundCharacters[0].extra.forEach((char, index) => { %>
+                                <ul>
+                                <li><%= char %></li>
+                                </ul>
                             <% }) %>
                         <% } else { %>
                             <p>No extra data found</p>
