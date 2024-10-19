@@ -3,22 +3,23 @@
 <%- include("partials/nav"); -%>
 
 <div class="container-fluid">
-  <div class="row row-cols-xs-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 pt-5">
+  <div class="row row-cols-xs-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
     <% if (locals.arrCharacters && arrCharacters.length > 0) { %>
       <% arrCharacters.forEach((char, index) => { %>
-        <div class="col m-4">
+        <div class="col">
           <div class="card text-center border-warning">
-            <img src="<%= char.image %>" alt="Darth Vader" class="card-img-top" onerror="this.style.display='none';">
+            <img src="<%= char.image %>" alt="Darth Vader" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><%= char.name %></h3>
-              <p class="card-text affiliation"><%= char.affl[0] %></p>
+                <%if (char.affl.length >0) { %>
+                  <p class="card-text affiliation"><%= char.affl[0] %></p>
+                <% } else { %>
+                  <p class="card-text affiliation">No affiliation found</p>
+                <% } %>
             </div>
           </div>    
         </div>
-      <% }) %>
-    <% } %>
-  </div>
-</div>
- 
+      </div>    
+    </div>
 
 <%- include("partials/footer"); -%>
