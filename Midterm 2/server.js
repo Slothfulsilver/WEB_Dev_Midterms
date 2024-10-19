@@ -169,7 +169,7 @@ app.route('/')
 //Making route /search for the character search bar
 app.route('/search')
   .get((req, res)=>{
-    var name = req.query.uName;
+    var name = req.query.name;
     console.log(`Characters found: ${foundCharacters.length}`)
     //If there are any characters found, render the found ejs
     if(foundCharacters.length > 0){
