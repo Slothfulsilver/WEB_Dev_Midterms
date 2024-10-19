@@ -98,3 +98,17 @@ body {
   font-weight: 400;
   font-size: larger;
 }
+
+#char{
+  background-color: #2e2e2e;
+}
+
+#charImg {
+  max-width: 100%;
+  border: solid #ffd500;
+  border-radius: 10%;
+
+}
+
+#main_data {
+}
