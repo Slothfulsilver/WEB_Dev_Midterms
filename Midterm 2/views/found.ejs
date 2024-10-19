@@ -4,7 +4,7 @@
 
 
 
-<div class="container pt-5 found">
+<div class="container pt-5 found text-center">
     <div class="container" id="char">
         <h2><%= foundCharacters[0].name %></h2> 
         <a href="<%= foundCharacters[0].linkWiki %>" target="_blank">Link to the wiki</a>
@@ -28,9 +28,7 @@
                         Extras:
                         <% if (foundCharacters[0].extra) { %>
                             <% foundCharacters[0].extra.forEach((char, index) => { %>
-                                <ul>
-                                <li><%= char %></li>
-                                </ul>
+                                <p><%= char %></p> <br>
                             <% }) %>
                         <% } else { %>
                             <p>No extra data found</p>
