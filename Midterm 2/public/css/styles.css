@@ -177,7 +177,7 @@ Pagination Styles
 .page-item .page-link {
   color: #111;
   background-color: #ffd500;
-  border: 2px solid #f8f8e6;
+  border: 2px solid #ffd500;
 }
 
 .page-item .page-link:hover {
@@ -197,5 +197,5 @@ Pagination Styles
   color: #6c757d;
   pointer-events: none;
   background-color: #ffe082;
-  border-color: #dee2e6;
+  border-color: 2px solid #ffd500;
 }
