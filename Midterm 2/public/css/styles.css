@@ -4,10 +4,40 @@ body {
     font-weight: 400;
     font-style: normal;
     color: #ffd500;
+
+    /*https://cdnb.artstation.com/p/assets/images/images/055/416/263/large/arpx-ombodi-4.jpg?1666886399*/
+    /*https://wallpapercat.com/w/full/8/2/a/466333-3840x2160-desktop-4k-death-star-star-wars-wallpaper.jpg*/
+    /*https://i.pinimg.com/originals/ec/e9/50/ece9508cfaaa2a93d1cd046999dacd01.jpg*/
+    background-image: url('https://i.pinimg.com/originals/ec/e9/50/ece9508cfaaa2a93d1cd046999dacd01.jpg'); 
+    background-size:cover; 
+    background-repeat: no-repeat; 
+    background-position: center top; 
+    background-attachment: fixed;
+    
+}
+
+.cursor{
+  
+  width: 10%;
+}
+
+.navDiv{
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+}
+
+.navbar{
+  background: linear-gradient(to bottom, hsl(0, 2%, 8%), hsla(0, 1%, 14%, 0)) !important;
+  
 }
 
 .navbar-brand {
     color: #ffd500;
+}
+
+.navbar-brand:hover{
+  color: #f8f8e6;
 }
 
 #search{
@@ -16,16 +46,24 @@ body {
 
 .card:hover {
   transform: scale(1.1);
+  box-shadow: 0 4px 8px #ffd818b7;
 }
 
 .card {
-  background-color: #111;
+  background-image: url('https://i.pinimg.com/474x/be/94/d2/be94d26cb4f6b8be905caab8041d7157.jpg'); 
+  background-size:auto; 
+  background-repeat:repeat; 
+  background-position: center top; 
+  background-attachment: fixed;
+
+  background-color: #111111d8;
   border-radius: 10px;
   width: 220px;
   margin: 20px;
   text-align: center;
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #f8f8e6;
+  box-shadow: 0 4px 8px rgba(19, 19, 19, 0.644);
+  transition: transform 0.3s ease-in-out;
 }
 
 .card img {
